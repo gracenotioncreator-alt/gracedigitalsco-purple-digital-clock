@@ -1,71 +1,22 @@
-document.addEventListener('DOMContentLoaded', function() {
+function updateClock() {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = now.getMinutes();
 
-    const monthYear = document.getElementById('month-year');
-    const daysContainer = document.getElementById('days');
-    const prevButton = document.getElementById('prev');
-    const nextButton = document.getElementById('next');
+  // Keep 24-hour format optional, or you can convert to 12-hour without AM/PM
+  // Here, just 12-hour without AM/PM
+  hours = hours % 12;
+  hours = hours ? hours : 12; // 0 becomes 12
 
-    const months = [
-        'JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE',
-        'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'
-    ];
+  // Update time in HH:MM format
+  const timeString = `${hours}:${String(minutes).padStart(2, '0')}`;
+  document.getElementById("time").textContent = timeString;
 
-    let currentDate = new Date();
-    let today = new Date();
+  // Update date: Month Day, Year
+  const options = { month: 'long', day: 'numeric', year: 'numeric' };
+  document.getElementById("Date").textContent = now.toLocaleDateString('en-US', options);
+}
 
-    function renderCalendar(date) {
-
-        const year = date.getFullYear();
-        const month = date.getMonth();
-        const firstDay = new Date(year, month, 1).getDay();
-        const lastDay = new Date(year, month + 1, 0).getDate();
-
-        monthYear.textContent = `${months[month]} ${year}`;
-        daysContainer.innerHTML = '';
-
-        const prevMonthLastDay = new Date(year, month, 0).getDate();
-
-        for (let i = firstDay; i > 0; i--) {
-            const dayDiv = document.createElement('div');
-            dayDiv.textContent = prevMonthLastDay - i + 1;
-            dayDiv.classList.add('fade');
-            daysContainer.appendChild(dayDiv);
-        }
-
-        for (let i = 1; i <= lastDay; i++) {
-            const dayDiv = document.createElement('div');
-            dayDiv.textContent = i;
-
-            if (
-                i === today.getDate() &&
-                month === today.getMonth() &&
-                year === today.getFullYear()
-            ) {
-                dayDiv.classList.add('today');
-            }
-
-            daysContainer.appendChild(dayDiv);
-        }
-
-        const nextMonthDays = (7 - ((firstDay + lastDay) % 7)) % 7;
-
-        for (let i = 1; i <= nextMonthDays; i++) {
-            let dayDiv = document.createElement('div');
-            dayDiv.textContent = i;
-            dayDiv.classList.add('fade');
-            daysContainer.appendChild(dayDiv);
-        }
-    }
-
-    prevButton.addEventListener('click', function() {
-        currentDate.setMonth(currentDate.getMonth() - 1);
-        renderCalendar(currentDate);
-    });
-
-    nextButton.addEventListener('click', function() {
-        currentDate.setMonth(currentDate.getMonth() + 1);
-        renderCalendar(currentDate);
-    });
-
-    renderCalendar(currentDate);
-});
+// Update every second
+setInterval(updateClock, 1000);
+updateClock();
