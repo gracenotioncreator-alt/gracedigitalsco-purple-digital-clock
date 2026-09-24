@@ -1,44 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock Widget</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400&family=Archivo+Black&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="calendar">
-
-    <div class="header">
-
-        <div class="month-pill">
-            <div id="prev" class="btn">
-                <i class="fa-solid fa-arrow-left"></i>
-            </div>
-
-            <div id="month-year"></div>
-
-            <div id="next" class="btn">
-                <i class="fa-solid fa-arrow-right"></i>
-            </div>
-        </div>
-
+  <div class="container">
+    <div class="clock">
+      <div id="time">12:00</div>
+      <div id="Date">February 9, 2026</div>
     </div>
+  </div>
 
-    <div class="weekdays">
-        <div>S</div>
-        <div>M</div>
-        <div>T</div>
-        <div>W</div>
-        <div>T</div>
-        <div>F</div>
-        <div>S</div>
-    </div>
-
-    <div class="days" id="days"></div>
-
-</div>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
