@@ -14,14 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let today = new Date();
 
     function renderCalendar(date) {
+
         const year = date.getFullYear();
         const month = date.getMonth();
-
         const firstDay = new Date(year, month, 1).getDay();
         const lastDay = new Date(year, month + 1, 0).getDate();
 
-        monthYear.textContent = months[month];
-
+        monthYear.textContent = `${months[month]} ${year}`;
         daysContainer.innerHTML = '';
 
         const prevMonthLastDay = new Date(year, month, 0).getDate();
@@ -69,5 +68,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     renderCalendar(currentDate);
-
 });
