@@ -1,0 +1,124 @@
+
+
+.fade {
+    color: #402E2A;
+    opacity: 0.5;
+}
+
+body {
+    font-family: 'Archivo Black', sans-serif;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #FFF8F0;
+}
+
+.calendar {
+    background-color: #FFF8F0;
+    border-radius: 25px;
+    overflow: hidden;
+    width: 320px;
+    color: #402E2A;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* PILL */
+
+.month-pill {
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    background-color: #F8BBD0;
+    border-radius: 999px;
+    padding: 0 14px;
+    gap: 8px;
+    width: 100%;
+    max-width: 260px;
+    height: 38px;
+}
+
+/* ARROW BUTTON */
+
+.month-pill .btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    flex-shrink: 0;
+}
+
+/* WHITE ARROWS */
+
+.month-pill .btn i {
+    color: #FFFFFF;
+    line-height: 38px;
+    transition: 0.2s ease;
+}
+
+.month-pill .btn:hover i {
+    opacity: 0.7;
+}
+
+/* MONTH TEXT */
+
+#month-year {
+    margin-top: 2px;
+    flex-grow: 1;
+    text-align: center;
+    white-space: nowrap;
+    font-family: 'Archivo Black', Arial, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 38px;
+}
+
+.weekdays, .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.days {
+    height: 240px;
+}
+
+.weekdays div, .days div {
+    color: #402E2A;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px auto;
+    text-align: center;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.days div {
+    font-family: 'Archivo', Arial, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.days .today {
+    background-color: #F8BBD0;
+    color: #FFFFFF;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.days .fade {
+    color: #402E2A;
+}
